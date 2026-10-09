@@ -1,0 +1,607 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #6558d9;
+    --primary-dark: #5144bd;
+    --ink: #252641;
+    --muted: #85869b;
+    --border: #e9e9f2;
+    --surface: #ffffff;
+    --background: #f7f7fc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', Arial, sans-serif;
+    background: var(--background);
+    color: var(--ink);
+    min-height: 100vh;
+}
+
+.navbar {
+    height: 76px;
+    padding: 0 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    border-bottom: 1px solid #eeeef5;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--ink);
+    font-family: 'Manrope', sans-serif;
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.brand-icon {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    background: var(--primary);
+    color: white;
+    border-radius: 11px;
+    font-size: 27px;
+    font-weight: 500;
+}
+
+.brand-light {
+    color: var(--primary);
+}
+
+.nav-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: #88889d;
+}
+
+.page-wrapper {
+    max-width: 1160px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.welcome-section {
+    padding: 54px 0 35px;
+}
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 10px;
+    letter-spacing: 1.7px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 19px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    background: #49b995;
+    border-radius: 50%;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Manrope', sans-serif;
+}
+
+.welcome-section h1 {
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.25;
+    letter-spacing: -1.8px;
+    font-weight: 800;
+}
+
+.welcome-section h1 span {
+    color: var(--primary);
+}
+
+.welcome-section > p {
+    max-width: 530px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.8;
+    margin-top: 15px;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    gap: 25px;
+    align-items: start;
+}
+
+.calculator-card,
+.info-card,
+.ranges-card,
+.tip-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+}
+
+.calculator-card {
+    padding: 30px;
+    box-shadow: 0 10px 35px rgba(42, 38, 91, 0.045);
+}
+
+.card-heading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-bottom: 25px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #f0f0f6;
+}
+
+.heading-icon {
+    width: 47px;
+    height: 47px;
+    display: grid;
+    place-items: center;
+    color: var(--primary);
+    background: #f0eeff;
+    border-radius: 14px;
+    font-size: 28px;
+}
+
+.card-heading h2 {
+    font-size: 20px;
+    letter-spacing: -0.5px;
+}
+
+.card-heading p {
+    margin-top: 5px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.field-group label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #46465f;
+}
+
+input,
+select {
+    width: 100%;
+    height: 49px;
+    padding: 0 14px;
+    border: 1px solid #e5e5ef;
+    border-radius: 10px;
+    background: #fcfcff;
+    color: var(--ink);
+    font: inherit;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input::placeholder {
+    color: #aaaabd;
+}
+
+input:focus,
+select:focus {
+    border-color: #8a7dea;
+    box-shadow: 0 0 0 3px rgba(101, 88, 217, 0.10);
+}
+
+.input-wrap {
+    position: relative;
+}
+
+.input-wrap input {
+    padding-right: 52px;
+}
+
+.input-unit {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8c8ca2;
+    font-size: 12px;
+    pointer-events: none;
+}
+
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.calculate-button {
+    width: 100%;
+    height: 51px;
+    margin-top: 3px;
+    padding: 0 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    border: none;
+    border-radius: 10px;
+    background: var(--primary);
+    color: #ffffff;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 14px rgba(101, 88, 217, 0.18);
+    transition: background 0.2s, transform 0.2s;
+}
+
+.calculate-button span {
+    font-size: 19px;
+}
+
+.calculate-button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.privacy-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    margin-top: -5px;
+    color: #8d8da1;
+    font-size: 11px;
+}
+
+.privacy-note span {
+    color: #299d77;
+    font-weight: 700;
+}
+
+.result-card {
+    margin-top: 26px;
+    padding: 23px;
+    border: 1px solid #e2defd;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #f7f5ff, #ffffff);
+    text-align: center;
+}
+
+.result-label {
+    font-size: 10px;
+    letter-spacing: 1.6px;
+    font-weight: 700;
+    color: var(--muted);
+}
+
+.result-number {
+    margin: 9px 0;
+    color: var(--primary);
+    font-family: 'Manrope', sans-serif;
+    font-size: 45px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.result-category {
+    display: inline-block;
+    padding: 7px 14px;
+    border-radius: 20px;
+    background: #e5f7ee;
+    color: #23815d;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.result-description {
+    margin-top: 13px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.info-column {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.info-card {
+    padding: 26px;
+    background: linear-gradient(145deg, #f0edff, #ffffff 90%);
+}
+
+.info-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.info-icon {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    background: #ffffff;
+    border: 1px solid #e7e1ff;
+    border-radius: 12px;
+    color: var(--primary);
+    font-size: 22px;
+}
+
+.info-tag {
+    color: var(--primary);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+.info-card h3,
+.ranges-card h3,
+.tip-card h3 {
+    font-size: 17px;
+    letter-spacing: -0.4px;
+}
+
+.info-card > p,
+.tip-card p {
+    margin-top: 10px;
+    color: #77788e;
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.formula {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    margin-top: 20px;
+    padding: 14px;
+    border: 1px solid #e8e3ff;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.75);
+    color: #65627e;
+    font-size: 10px;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.formula-line {
+    width: 70%;
+    height: 1px;
+    background: #b5a9f5;
+}
+
+.ranges-card {
+    padding: 25px;
+}
+
+.ranges-card h3 {
+    font-size: 16px;
+}
+
+.ranges-subtitle {
+    margin-top: 6px;
+    margin-bottom: 20px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.range-row {
+    display: grid;
+    grid-template-columns: 9px 1fr auto;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 0;
+    border-top: 1px solid #f0f0f6;
+    font-size: 11px;
+    color: #66677d;
+}
+
+.range-row strong {
+    color: #34344e;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.range-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.underweight {
+    background: #e4b44e;
+}
+
+.normal {
+    background: #35b98b;
+}
+
+.overweight {
+    background: #ed9851;
+}
+
+.obesity {
+    background: #e36e7d;
+}
+
+.tip-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 21px;
+    background: #ffffff;
+}
+
+.tip-icon {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: #fff0f5;
+    color: #d45e8c;
+    font-size: 20px;
+}
+
+.tip-card h3 {
+    font-size: 14px;
+}
+
+.tip-card p {
+    margin-top: 6px;
+    font-size: 11px;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 27px 0;
+    margin-top: 15px;
+    color: #9999ab;
+    font-size: 10px;
+}
+
+@media (max-width: 800px) {
+    .navbar {
+        padding: 0 5%;
+    }
+
+    .page-wrapper {
+        width: 92%;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome-section {
+        padding-top: 38px;
+    }
+
+    .calculator-card {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-label {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .brand {
+        font-size: 20px;
+    }
+
+    .welcome-section h1 {
+        font-size: 29px;
+        letter-spacing: -1px;
+    }
+
+    .welcome-section > p {
+        font-size: 13px;
+    }
+
+    .calculator-card,
+    .info-card,
+    .ranges-card {
+        padding: 20px;
+    }
+
+    footer {
+        font-size: 9px;
+    }
+}
+/* BMI result category colors */
+.result-category.underweight {
+    color: #3b82f6;
+}
+
+.result-category.normal {
+    color: #16a34a;
+}
+
+.result-category.overweight {
+    color: #ea580c;
+}
+
+.result-category.obesity {
+    color: #dc2626;
+}
+
+/* BMI indicator bar */
+.bmi-meter {
+    margin-top: 22px;
+}
+
+.bmi-meter-track {
+    display: flex;
+    gap: 4px;
+    height: 9px;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.bmi-meter-segment {
+    flex: 1;
+    border-radius: 20px;
+}
+
+.underweight-bg {
+    background: #60a5fa;
+}
+
+.normal-bg {
+    background: #4ade80;
+}
+
+.overweight-bg {
+    background: #fb923c;
+}
+
+.obesity-bg {
+    background: #f87171;
+}
+
+.bmi-meter-labels {
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+    margin-top: 8px;
+    font-size: 10px;
+    color: #7b8190;
+}

@@ -1,0 +1,245 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VitalCare | BMI Health Tracker</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="/" class="brand">
+            <span class="brand-icon">+</span>
+            <span>vital<span class="brand-light">care</span></span>
+        </a>
+        <span class="nav-label">PERSONAL HEALTH TOOLS</span>
+    </nav>
+
+    <main class="page-wrapper">
+
+        <section class="welcome-section">
+            <div class="eyebrow">
+                <span class="status-dot"></span>
+                YOUR PERSONAL WELLNESS SPACE
+            </div>
+
+            <h1>
+                Understand your body.<br>
+                <span>Take charge of your health.</span>
+            </h1>
+
+            <p>
+                Calculate your Body Mass Index and get a simple overview
+                of your current health category.
+            </p>
+        </section>
+
+        <section class="dashboard">
+
+            <div class="calculator-card">
+                <div class="card-heading">
+                    <div class="heading-icon">♡</div>
+                    <div>
+                        <h2>BMI Calculator</h2>
+                        <p>Enter your details below to get started.</p>
+                    </div>
+                </div>
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <div class="field-group">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender" required>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="age">Age</label>
+                        <div class="input-wrap">
+                            <input
+                                type="number"
+                                id="age"
+                                name="age"
+                                min="2"
+                                max="120"
+                                placeholder="Enter your age"
+                                required
+                            >
+                            <span class="input-unit">years</span>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label>Height</label>
+                        <div class="two-columns">
+                            <div class="input-wrap">
+                                <input
+                                    type="number"
+                                    name="feet"
+                                    min="0"
+                                    max="8"
+                                    placeholder="Feet"
+                                    aria-label="Height in feet"
+                                    required
+                                >
+                                <span class="input-unit">ft</span>
+                            </div>
+
+                            <div class="input-wrap">
+                                <input
+                                    type="number"
+                                    name="inches"
+                                    min="0"
+                                    max="11"
+                                    placeholder="Inches"
+                                    aria-label="Height in inches"
+                                    required
+                                >
+                                <span class="input-unit">in</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="weight">Weight</label>
+                        <div class="input-wrap">
+                            <input
+                                type="number"
+                                id="weight"
+                                name="weight"
+                                min="1"
+                                max="500"
+                                step="any"
+                                placeholder="Enter your weight"
+                                required
+                            >
+                            <span class="input-unit">kg</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="calculate-button">
+                        Calculate my BMI
+                        <span>→</span>
+                    </button>
+
+                    <p class="privacy-note">
+                        <span>✓</span> Simple calculation, instant result
+                    </p>
+                </form>
+
+                {% if result is not None %}
+                <div class="result-card">
+                    <p class="result-label">YOUR BMI RESULT</p>
+
+                    <div class="result-number">{{ result }}</div>
+
+                    <div class="result-category {{ result_color }}">
+                        {{ category }}
+                    </div>
+
+                    <p class="result-description">
+                        Your BMI is a general screening measure, not a diagnosis.
+                    </p>
+
+                    <div class="bmi-meter">
+                        <div class="bmi-meter-track">
+                            <div class="bmi-meter-segment underweight-bg"></div>
+                            <div class="bmi-meter-segment normal-bg"></div>
+                            <div class="bmi-meter-segment overweight-bg"></div>
+                            <div class="bmi-meter-segment obesity-bg"></div>
+                        </div>
+
+                        <div class="bmi-meter-labels">
+                            <span>Underweight</span>
+                            <span>Normal</span>
+                            <span>Overweight</span>
+                            <span>Obesity</span>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            <aside class="info-column">
+
+                <div class="info-card">
+                    <div class="info-top">
+                        <span class="info-icon">✳</span>
+                        <span class="info-tag">THE BASICS</span>
+                    </div>
+
+                    <h3>What is BMI?</h3>
+                    <p>
+                        Body Mass Index (BMI) compares your weight with
+                        your height to provide a general screening measure
+                        for adults.
+                    </p>
+
+                    <div class="formula">
+                        <span>WEIGHT (KG)</span>
+                        <span class="formula-line"></span>
+                        <span>HEIGHT (M) × HEIGHT (M)</span>
+                    </div>
+                </div>
+
+                <div class="ranges-card">
+                    <h3>Adult BMI categories</h3>
+                    <p class="ranges-subtitle">
+                        Standard adult screening ranges
+                    </p>
+
+                    <div class="range-row">
+                        <span class="range-dot underweight"></span>
+                        <span>Underweight</span>
+                        <strong>Below 18.5</strong>
+                    </div>
+
+                    <div class="range-row">
+                        <span class="range-dot normal"></span>
+                        <span>Normal weight</span>
+                        <strong>18.5–24.9</strong>
+                    </div>
+
+                    <div class="range-row">
+                        <span class="range-dot overweight"></span>
+                        <span>Overweight</span>
+                        <strong>25–29.9</strong>
+                    </div>
+
+                    <div class="range-row">
+                        <span class="range-dot obesity"></span>
+                        <span>Obesity range</span>
+                        <strong>30 or above</strong>
+                    </div>
+                </div>
+
+                <div class="tip-card">
+                    <span class="tip-icon">♡</span>
+                    <div>
+                        <h3>A gentle reminder</h3>
+                        <p>
+                            Your health is more than a number.
+                            Sleep, nutrition, movement and overall
+                            wellbeing matter too.
+                        </p>
+                    </div>
+                </div>
+
+            </aside>
+        </section>
+
+        <footer>
+            <span>vitalcare © 2026</span>
+            <span>Built with Django &amp; Python</span>
+        </footer>
+
+    </main>
+</body>
+</html>
+
